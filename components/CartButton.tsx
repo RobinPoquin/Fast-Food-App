@@ -14,7 +14,7 @@ const CartButton = () => {
                 resizeMode="contain" // garde les proportions de l’image
             />
 
-            {/* Affiche le badge uniquement si il y a des articles */}
+            {/* Affiche le badge uniquement s'il y a des articles */}
             {totalItems > 0 && (
                 <View className="cart-badge">
                     {/* Nombre d’articles affiché dans le badge */}
