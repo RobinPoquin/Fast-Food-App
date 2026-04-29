@@ -1,13 +1,19 @@
-import {View, Text} from 'react-native'
+import {View, KeyboardAvoidingView, Platform, ScrollView, Dimensions, ImageBackground, Image} from 'react-native'
 import React from 'react'
-import {SafeAreaView} from "react-native-safe-area-context" // permet d’éviter les zones “coupées” (notch, etc.)
-import {Slot} from "expo-router" // sert à afficher les pages enfants dans ce layout
+import {Slot} from "expo-router" // permet d'afficher les écrans enfants dans ce layout
+import {images} from "@/constants";
+
 
 export default function _Layout() {
     return (
-        <SafeAreaView> {/* zone sécurisée pour éviter que le contenu soit masqué */}
-            <Text>Auth_Layout</Text>
-            <Slot /> {/* ici seront injectées les pages liées à l'auth */}
-        </SafeAreaView>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height' }> {/* évite que le clavier cache les inputs */}
+            <ScrollView className="bg-white h-full" keyboardShouldPersistTaps="handled"> {/* permet de scroller et gérer les clics avec le clavier ouvert */}
+                <View className="w-full relative" style={{ height: Dimensions.get('screen').height / 2.25 }}> {/* bloc du haut avec une hauteur dynamique */}
+                    <ImageBackground source={images.loginGraphic} className="size-full rounded-b-lg" resizeMode="stretch" /> {/* image de fond du header */}
+                    <Image source={images.logo} className="self-center size-48 absolute -bottom-16 z-10" /> {/* logo placé au centre et qui déborde vers le bas */}
+                </View>
+                <Slot /> {/* ici s'affichent les écrans enfants */}
+            </ScrollView>
+        </KeyboardAvoidingView>
     )
 }
