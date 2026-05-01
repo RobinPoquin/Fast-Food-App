@@ -39,6 +39,14 @@
             "backgroundColor": "#000000"
           }
         }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "robin_react-native_fastfood_app",
+          "organization": "robin-gaa"
+        }
       ]
     ],
     "experiments": {

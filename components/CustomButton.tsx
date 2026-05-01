@@ -16,7 +16,8 @@ const CustomButton = ({
 
             <View className="flex-center flex-row"> {/* aligne le contenu du bouton */}
                 {isLoading ? (
-                    <ActivityIndicator size="small" color="white" /> // affiche un loader si en cours
+                    // affiche un loader si en cours
+                    <ActivityIndicator size="small" color="white" />
                 ): (
                     <Text className={cn('text-white-100 paragraph-semibold', textStyle)}> {/* texte du bouton */}
                         {title}

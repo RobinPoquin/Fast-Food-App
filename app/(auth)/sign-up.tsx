@@ -2,22 +2,24 @@ import {View, Text, Button, Alert} from 'react-native'
 import React, {useState} from 'react'
 import {Link, router} from "expo-router"; // navigation entre les pages
 import CustomInput from "@/components/CustomInput"; // champ de saisie personnalisé
-import CustomButton from "@/components/CustomButton"; // bouton avec état de chargement
+import CustomButton from "@/components/CustomButton";
+import {createUser} from "@/lib/appwrite"; // bouton avec état de chargement
 
 const SignUp = () => {
     const [isSubmitting, setIsSubmitting] = useState(false) // indique si l'inscription est en cours
     const [form, setForm] = useState({ name: '', email: "", password: "" }) // stocke les infos du formulaire
 
     const submit = async () => {
+        const { name, email, password } = form
+
         // vérifie que tous les champs sont remplis
-        if(!form.name || !form.email || !form.password) return  Alert.alert('Erreur', 'Veuillez rentré une adresse mail & mot de passe valide')
+        if(!name || !email || !password) return  Alert.alert('Erreur', 'Veuillez rentré une adresse mail & mot de passe valide')
 
         setIsSubmitting(true) // active le loading
 
         try {
-            //Appel Appwrite (création du compte)
+            await createUser({email, password, name }) // crée le compte utilisateur
 
-            Alert.alert('Succès', 'Utilisateur connecté'); // message de succès
             router.replace('/') // redirige vers l'accueil
         } catch (error:any) {
             Alert.alert('Erreur', error.message); // affiche une erreur si problème

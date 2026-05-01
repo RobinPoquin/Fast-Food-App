@@ -3,24 +3,30 @@ import React, {useState} from 'react'
 import {Link, router} from "expo-router"; // navigation entre les pages
 import CustomInput from "@/components/CustomInput"; // champ de saisie personnalisé
 import CustomButton from "@/components/CustomButton"; // bouton personnalisé avec état loading
+import {signIn} from "@/lib/appwrite";
+
+import * as Sentry from "@sentry/react-native";
+
 
 const SignIn = () => {
     const [isSubmitting, setIsSubmitting] = useState(false) // indique si la requête est en cours
     const [form, setForm] = useState({ email: "", password: "" }) // stocke les données du formulaire
 
     const submit = async () => {
+        const { email, password } = form
+
         // vérifie que les champs ne sont pas vides
-        if(!form.email || !form.password) return Alert.alert('Erreur', 'Veuillez rentré une adresse mail & mot de passe valide')
+        if(!email || !password) return Alert.alert('Erreur', 'Veuillez rentré une adresse mail & mot de passe valide')
 
         setIsSubmitting(true) // active le loading
 
         try {
-            //Appel Appwrite (connexion utilisateur)
+            await signIn({email, password}) // connecte l'utilisateur
 
-            Alert.alert('Succès', 'Utilisateur connecté'); // message de succès
             router.replace('/') // redirige vers la page d'accueil
         } catch (error:any) {
             Alert.alert('Erreur', error.message); // affiche l'erreur si problème
+            Sentry.captureEvent(error)
         } finally {
             setIsSubmitting(false) // désactive le loading dans tous les cas
         }

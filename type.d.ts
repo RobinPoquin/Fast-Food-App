@@ -15,3 +15,14 @@ interface CustomButtonProps {
     textStyle?: string;
     isLoading?: boolean;
 }
+
+interface CreateUserParams {
+    email: string;
+    password: string;
+    name: string;
+}
+
+interface SignInParams {
+    email: string;
+    password: string;
+}
