@@ -26,3 +26,9 @@ interface SignInParams {
     email: string;
     password: string;
 }
+
+export interface User extends Models.Document {
+    name: string;
+    email: string;
+    avatar: string;
+}

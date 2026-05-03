@@ -1,6 +1,7 @@
 import {View, Text, TextInput} from 'react-native'
 import React, {useState} from 'react'
-import cn from "clsx"; // permet de gérer facilement les classes conditionnelles
+import cn from "clsx";
+import {CustomInputProps} from "@/type"; // permet de gérer facilement les classes conditionnelles
 
 const CustomInput = ({
                          placeholder = 'Rentrez texte', // texte affiché quand le champ est vide

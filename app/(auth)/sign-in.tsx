@@ -4,6 +4,7 @@ import {Link, router} from "expo-router"; // navigation entre les pages
 import CustomInput from "@/components/CustomInput"; // champ de saisie personnalisé
 import CustomButton from "@/components/CustomButton"; // bouton personnalisé avec état loading
 import {signIn} from "@/lib/appwrite";
+import useAuthStore from "@/store/auth.store";
 
 import * as Sentry from "@sentry/react-native";
 
@@ -11,6 +12,9 @@ import * as Sentry from "@sentry/react-native";
 const SignIn = () => {
     const [isSubmitting, setIsSubmitting] = useState(false) // indique si la requête est en cours
     const [form, setForm] = useState({ email: "", password: "" }) // stocke les données du formulaire
+
+    const { fetchAuthenticatedUser } = useAuthStore();
+
 
     const submit = async () => {
         const { email, password } = form
@@ -22,7 +26,7 @@ const SignIn = () => {
 
         try {
             await signIn({email, password}) // connecte l'utilisateur
-
+            await fetchAuthenticatedUser()
             router.replace('/') // redirige vers la page d'accueil
         } catch (error:any) {
             Alert.alert('Erreur', error.message); // affiche l'erreur si problème

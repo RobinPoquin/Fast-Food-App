@@ -4,8 +4,13 @@ import {Link, router} from "expo-router"; // navigation entre les pages
 import CustomInput from "@/components/CustomInput"; // champ de saisie personnalisé
 import CustomButton from "@/components/CustomButton";
 import {createUser} from "@/lib/appwrite"; // bouton avec état de chargement
+import useAuthStore from "@/store/auth.store";
+
 
 const SignUp = () => {
+
+    const { fetchAuthenticatedUser } = useAuthStore();
+
     const [isSubmitting, setIsSubmitting] = useState(false) // indique si l'inscription est en cours
     const [form, setForm] = useState({ name: '', email: "", password: "" }) // stocke les infos du formulaire
 
@@ -19,6 +24,7 @@ const SignUp = () => {
 
         try {
             await createUser({email, password, name }) // crée le compte utilisateur
+            await fetchAuthenticatedUser()
 
             router.replace('/') // redirige vers l'accueil
         } catch (error:any) {

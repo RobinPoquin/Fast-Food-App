@@ -1,10 +1,15 @@
 import {View, KeyboardAvoidingView, Platform, ScrollView, Dimensions, ImageBackground, Image} from 'react-native'
 import React from 'react'
-import {Slot} from "expo-router" // permet d'afficher les écrans enfants dans ce layout
+import {Redirect, Slot} from "expo-router" // permet d'afficher les écrans enfants dans ce layout
 import {images} from "@/constants";
+import useAuthStore from "@/store/auth.store";
 
 
 export default function _Layout() {
+    const { isAuthenticated } = useAuthStore();
+
+    if (isAuthenticated) return <Redirect href="/" /> // Redirige vers la HomePage si déjà connecté
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height' }> {/* évite que le clavier cache les inputs */}
             <ScrollView className="bg-white h-full" keyboardShouldPersistTaps="handled"> {/* permet de scroller et gérer les clics avec le clavier ouvert */}

@@ -1,6 +1,7 @@
-import {Account, Avatars, Client, Databases, ID, Query} from "react-native-appwrite"; // SDK Appwrite pour gérer auth, DB, etc.
+import {Account, Avatars, Client, Databases, ID, Query} from "react-native-appwrite";
+import {CreateUserParams, SignInParams} from "@/type"; // SDK Appwrite pour gérer auth, DB, etc.
 
-// Configuration de l'app Appwrite (liée à ton projet backend)
+// Configuration de l'app Appwrite
 export const appwriteConfig = {
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!, // URL de ton serveur Appwrite
     platform: "com.robin.fastfoodapp", // identifiant de ton app mobile
@@ -40,6 +41,7 @@ export const createUser = async ({email, password, name} : CreateUserParams) => 
         )
 
     } catch (e) {
+        console.log('createUser ERREUR =>', e);
         throw new Error(e as string) // renvoie l'erreur
     }
 }
@@ -57,6 +59,7 @@ export const signIn = async ({email, password} : SignInParams) => {
 export const getCurrentUser = async () => {
     try {
         const currentAccount = await account.get(); // récupère le compte connecté
+
         if (!currentAccount) throw Error; // vérifie qu'il existe
 
         const currentUser = await databases.listDocuments(
@@ -68,8 +71,8 @@ export const getCurrentUser = async () => {
         if(!currentUser) throw Error; // vérifie que des données existent
 
         return currentUser.documents[0]; // retourne le premier utilisateur trouvé
-    } catch (e) {
-        console.error(e); // log l'erreur
+    } catch (e: any) {
+        if (e?.message?.includes('session is active')) return;
         throw new Error(e as string); // renvoie l'erreur
     }
 }
