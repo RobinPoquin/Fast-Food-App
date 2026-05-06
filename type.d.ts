@@ -32,3 +32,9 @@ export interface User extends Models.Document {
     email: string;
     avatar: string;
 }
+
+interface TabBarIconProps {
+    focused: boolean;
+    icon: ImageSourcePropType;
+    title: string;
+}

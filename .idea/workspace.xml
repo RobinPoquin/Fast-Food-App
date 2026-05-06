@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="180e3f76-ff66-4dc8-b28a-d1a06963f287" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/store/auth.store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CustomInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CustomInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/appwrite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/appwrite.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/type.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +81,8 @@
       <workItem from="1777106471684" duration="4388000" />
       <workItem from="1777478205690" duration="5358000" />
       <workItem from="1777646703627" duration="5411000" />
-      <workItem from="1777800395278" duration="6388000" />
+      <workItem from="1777800395278" duration="6807000" />
+      <workItem from="1778080241577" duration="1658000" />
     </task>
     <servers />
   </component>
@@ -103,13 +94,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/_layout.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app/_layout.tsx</url>
-          <line>7</line>
-          <properties lambdaOrdinal="-1" />
+          <line>8</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
