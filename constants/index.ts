@@ -67,25 +67,25 @@ export const CATEGORIES = [
 export const offers = [
     {
         id: 1,
-        title: "COMBO D'ÉTÉ",
+        title: "MENU",
         image: burgerOne,
         color: "#D33B0D",
     },
     {
         id: 2,
-        title: "FESTIN DE BURGERS",
+        title: "BURGERS",
         image: burgerTwo,
         color: "#DF5A0C",
     },
     {
         id: 3,
-        title: "FÊTE DE LA PIZZA",
+        title: "PIZZA",
         image: pizzaOne,
         color: "#084137",
     },
     {
         id: 4,
-        title: "DÉLICE DE BURRITO",
+        title: "BURRITO",
         image: buritto,
         color: "#EB920C",
     },

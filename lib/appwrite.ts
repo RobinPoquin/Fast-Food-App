@@ -7,7 +7,12 @@ export const appwriteConfig = {
     platform: "com.robin.fastfoodapp", // identifiant de ton app mobile
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!, // ID du projet Appwrite
     databaseId: '69f22b330026e121d83f', // ID de la base de données
+    bucketId : '69fb65900002c8067100',
     useCollectionId: 'user', // ID de la collection utilisateurs
+    categoriesCollectionId: '69fb61ba0002d5e8a9a1', // ID de la collection des catégories
+    menuCollectionID: '69fb625a0006d1213b8e', // ID de la collection des menus
+    customizationCollectionId: '69fb6369002bad0e1f0d', // ID de la collection des customisations
+    menuCustomizationCollectionID: '69fb649d0017e09a358c' // ID de la collection des liens menu / customisations
 }
 
 export const client = new Client(); // initialise le client Appwrite
