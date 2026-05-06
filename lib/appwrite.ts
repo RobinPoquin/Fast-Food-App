@@ -1,4 +1,4 @@
-import {Account, Avatars, Client, Databases, ID, Query} from "react-native-appwrite";
+import {Account, Avatars, Client, Databases, ID, Query, Storage} from "react-native-appwrite";
 import {CreateUserParams, SignInParams} from "@/type"; // SDK Appwrite pour gérer auth, DB, etc.
 
 // Configuration de l'app Appwrite
@@ -24,6 +24,7 @@ client
 
 export const account = new Account(client); // gère les utilisateurs (auth)
 export const databases = new Databases(client); // gère la base de données
+export const storage = new Storage(client)
 const avatars = new Avatars(client); // permet de générer des avatars automatiquement
 
 // Crée un nouvel utilisateur + l'enregistre en base
