@@ -56,3 +56,8 @@ export interface MenuItem extends Models.Document {
     rating: number;
     type: string;
 }
+
+export interface Category extends Models.Document {
+    name: string;
+    description: string;
+}

@@ -8,6 +8,8 @@ import CartButton from "@/components/CartButton";
 import cn from "clsx";
 import MenuCard from "@/components/MenuCard";
 import {MenuItem} from "@/type";
+import SearchBar from "@/components/SearchBar";
+import Filter from "@/components/Filter";
 
 const Search = () => {
 
@@ -79,10 +81,10 @@ const Search = () => {
                         </View>
 
                         {/* futur champ de recherche */}
-                        <Text>Search Input</Text>
+                        <SearchBar />
 
                         {/* futur système de filtres */}
-                        <Text>Filtre</Text>
+                        <Filter categories={categories!}/>
                     </View>
                 )}
 
