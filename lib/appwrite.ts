@@ -1,5 +1,5 @@
 import {Account, Avatars, Client, Databases, ID, Query, Storage} from "react-native-appwrite";
-import {CreateUserParams, SignInParams} from "@/type"; // SDK Appwrite pour gérer auth, DB, etc.
+import {CreateUserParams, GetMenuParams, SignInParams} from "@/type"; // SDK Appwrite pour gérer auth, DB, etc.
 
 // Configuration de l'app Appwrite
 export const appwriteConfig = {
@@ -79,6 +79,48 @@ export const getCurrentUser = async () => {
         return currentUser.documents[0]; // retourne le premier utilisateur trouvé
     } catch (e: any) {
         if (e?.message?.includes('session is active')) return;
+        throw new Error(e as string); // renvoie l'erreur
+    }
+}
+
+// Récupère les menus selon catégorie ou recherche
+export const getMenu = async ({ category, query } : GetMenuParams) => {
+    try {
+
+        const queries: string[] = []; // tableau des filtres de recherche
+
+        // Filtre par catégorie si renseignée
+        if (category) queries.push(Query.equal('categories', category));
+
+        // Recherche par nom si un texte est saisi
+        if (query) queries.push(Query.search('name', query));
+
+        // Récupère les menus depuis Appwrite
+        const menus = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.menuCollectionID,
+            queries
+        )
+
+        return menus.documents; // retourne les plats trouvés
+
+    } catch (e) {
+        throw new Error(e as string); // renvoie l'erreur
+    }
+}
+
+// Récupère toutes les catégories disponibles
+export const getCategories = async () => {
+    try {
+
+        const categories = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.categoriesCollectionId
+        )
+
+        return categories.documents; // retourne les catégories
+
+    } catch (e) {
         throw new Error(e as string); // renvoie l'erreur
     }
 }

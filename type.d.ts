@@ -38,3 +38,8 @@ interface TabBarIconProps {
     icon: ImageSourcePropType;
     title: string;
 }
+
+interface GetMenuParams {
+    category: string;
+    query: string;
+}
