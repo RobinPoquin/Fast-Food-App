@@ -6,6 +6,8 @@ import {useLocalSearchParams} from "expo-router";
 import {useEffect} from "react";
 import CartButton from "@/components/CartButton";
 import cn from "clsx";
+import MenuCard from "@/components/MenuCard";
+import {MenuItem} from "@/type";
 
 const Search = () => {
 
@@ -33,9 +35,11 @@ const Search = () => {
     }, [category, query]);
 
     return (
-        <SafeAreaView className="bg-white h-full"> {/* zone sécurisée de l’écran */}
+        // zone sécurisée de l’écran
+        <SafeAreaView className="bg-white h-full">
             <FlatList
-                data={data} // liste des menus à afficher
+                // liste des menus à afficher
+                data={data}
 
                 renderItem={({ item, index }) => {
 
@@ -44,7 +48,7 @@ const Search = () => {
 
                     return(
                         <View className={cn("flex-1 max-w-[48%]", !isFirstRightColItem ? 'mt-10' : 'mt-0')}>
-                            <Text>Menu</Text>
+                            <MenuCard item={item as unknown as MenuItem} />
                         </View>
                     )
                 }}
@@ -82,7 +86,6 @@ const Search = () => {
                     </View>
                 )}
 
-                // affiché quand aucun résultat n’est trouvé
                 ListEmptyComponent={() => !loading && <Text>Aucun résultat</Text>}
             />
         </SafeAreaView>
