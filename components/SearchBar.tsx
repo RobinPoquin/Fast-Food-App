@@ -28,7 +28,7 @@ const SearchBar = () => {
     }
 
     return (
-        <View className="searchbar"> {/* conteneur principal de la barre de recherche */}
+        <View className="searchbar">
 
             <TextInput
                 className="flex-1 p-5"

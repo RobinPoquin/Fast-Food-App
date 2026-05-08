@@ -1,12 +1,16 @@
 import {View, Text, TouchableOpacity, Image} from 'react-native'
 import React from 'react'
 import {images} from "@/constants";
+import {useCartStore} from "@/store/cart.store";
+import {router} from "expo-router";
 
 const CartButton = () => {
-    const totalItems = 10; // nombre d’articles dans le panier (à rendre dynamique plus tard)
+    // nombre d’articles dans le panier
+    const { getTotalItems } = useCartStore();
+    const totalItems = getTotalItems();
 
     return (
-        <TouchableOpacity className="cart-btn" onPress={() => {}}>
+        <TouchableOpacity className="cart-btn" onPress={() => router.push('/cart')}>
             {/* Icône du panier */}
             <Image
                 source={images.bag}

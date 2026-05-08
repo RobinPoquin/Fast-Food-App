@@ -1,25 +1,29 @@
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import React from 'react'
-import cn from "clsx"; // permet de gérer les classes dynamiques facilement
+import cn from "clsx";
+import {CustomButtonProps} from "@/type"; // permet de gérer les classes dynamiques facilement
 
 const CustomButton = ({
                           onPress,
-                          title="Cliquez moi", // texte affiché sur le bouton
+                          // texte affiché sur le bouton
+                          title="Cliquez moi",
                           style,
                           textStyle,
                           leftIcon,
-                          isLoading = false, // indique si un chargement est en cours
+                          // indique si un chargement est en cours
+                          isLoading = false,
                       }: CustomButtonProps) => {
     return (
-        <TouchableOpacity className={cn('custom-btn', style)} onPress={onPress}> {/* bouton cliquable avec styles personnalisables */}
-            {leftIcon} {/* icône affichée à gauche si fournie */}
-
-            <View className="flex-center flex-row"> {/* aligne le contenu du bouton */}
+        <TouchableOpacity className={cn('custom-btn', style)} onPress={onPress}>
+            {/* icône affichée à gauche si fournie */}
+            {leftIcon}
+            {/* aligne le contenu du bouton */}
+            <View className="flex-center flex-row">
                 {isLoading ? (
                     // affiche un loader si en cours
                     <ActivityIndicator size="small" color="white" />
                 ): (
-                    <Text className={cn('text-white-100 paragraph-semibold', textStyle)}> {/* texte du bouton */}
+                    <Text className={cn('text-white-100 paragraph-semibold', textStyle)}>
                         {title}
                     </Text>
                 )}

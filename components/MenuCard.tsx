@@ -1,11 +1,11 @@
 import {View, Text, TouchableOpacity, Image, Platform} from 'react-native'
 import {MenuItem} from "@/type";
 import {appwriteConfig} from "@/lib/appwrite";
+import {useCartStore} from "@/store/cart.store";
 
-const MenuCard = ({ item: {image_url, name, price}} : { item: MenuItem}) => {
+const MenuCard = ({ item: { $id, image_url, name, price}} : { item: MenuItem}) => {
 
-    // ajoute l’ID du projet dans l’URL de l’image Appwrite
-    const imageUrl = `${image_url}?project=${appwriteConfig.projectId}`
+    const { addItem } = useCartStore();
 
     return (
         <TouchableOpacity
@@ -39,7 +39,7 @@ const MenuCard = ({ item: {image_url, name, price}} : { item: MenuItem}) => {
             </Text>
 
             {/* bouton d’ajout au panier */}
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => addItem({id: $id, name, price, image_url: image_url, customizations: []})}>
                 <Text className="paragraph-bold text-primary">
                     Ajouter au Panier
                 </Text>
